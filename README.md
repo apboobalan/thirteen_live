@@ -1,19 +1,7 @@
 # ThirteenLive
 
-To start your Phoenix server:
+Frontend for the game Thirteen implemented using Phoenix LiveView. [Backend](https://github.com/apboobalan/thirteen) is also implemented in elixir.
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+Run `docker-compose up` and visit [`localhost:4000`](http://localhost:4000) for a local game.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Game is live at [thrtn.club](https://thrtn.club)
