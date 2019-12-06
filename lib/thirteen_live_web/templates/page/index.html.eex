@@ -1,0 +1,75 @@
+<section class="m-10">
+   <a class="font-black text-sm text-black" href="/">
+      <text class="font-black text-2xl text-yellow-400">//</text>
+         PLAY.
+      <text class="font-black text-2xl text-yellow-400">&rarr;</text>
+   </a>
+   <div class="bg-yellow-400 block h-3 md:mx-3 my-3"></div>
+   <div class="md:px-8">
+   <text class="font-black text-2xl text-black">
+   <text class="font-black text-2xl text-yellow-400">//</text>
+   HOW TO.
+   <a class="font-black text-2xl text-yellow-400" href="/">&rarr;</a>
+   </text>
+   </div>
+   <div class="bg-yellow-400 block h-3 md:mx-3 my-3"></div>
+   <ul class="md:m-10 list-none">
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&spades;&nbsp;</text>
+      Game is played among 2 - 4 people.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&hearts;&nbsp;</text>
+      Each game consists of 10 rounds. First round starts with serving 3 cards to each player, second round with 4 cards, and so on upto 13 cards which is the 10th round.
+      Each round consists of sub-rounds equal to the number of cards served.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&clubs;&nbsp;</text>
+      Each round starts with a betting by each player considering the cards in their hand.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&diams;&nbsp;</text>
+      The player who bet first, starts the throw.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&clubs;&nbsp;</text>
+      Successive players should play the same face if they have, else they can play other card.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&diams;&nbsp;</text>
+      At the end of each sub-round the winning player collects the cards and wins back a bet point.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&spades;&nbsp;</text>
+      Winner in the above step is chosen based on the cards thrown. spades are of highest order. Whoever played spades will be the winner. If no spade is played in the round, the player who played
+      highest value of the first played face will be the winner. The value order within same card face being 2&lt;10&lt;J&lt;Q&lt;K&lt;A.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&diams;&nbsp;</text>
+      Winner will start the next sub-round.
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&clubs;&nbsp;</text>
+      At the end of each round, the points are calculated. If the player won back all the placed bets, he will receive placed bet * 10 points. Each extra bet win will add 1 point. If not able to win back
+      all the placed bets the points will be subtracted by placed bet * 10. 
+   </li>
+   <li class="text-black font-bold">
+      <pre class="pl-8 text-sm text-gray-500">/&rarr; If I place a bet of 3 and win back 3, I would get   30 points.</pre>
+      <pre class="pl-8 text-sm text-gray-500">/&rarr; If I place a bet of 3 and win back 5, I would get   32 points.</pre>
+      <pre class="pl-8 text-sm text-gray-500">/&rarr; If I place a bet of 3 and win back 2, I would loose 30 points.</pre>
+   </li>
+   <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&hearts;&nbsp;</text>
+      Continue the next round starting with betting, the number of cards thrown being increased by one. And the player who starts bet will be player next to the player who started the previous round.
+   </li>
+   </ul>
+   <div class="bg-yellow-400 block h-3 md:mx-3 my-3"></div>
+   <a class="flex justify-center" href="/">
+   <text>&spades;&clubs;&hearts;&diams;</text>
+   </a>
+   <a class="font-black text-2xl text-black" href="/">
+      <text class="font-black text-2xl text-yellow-400">//</text>
+         PLAY.
+      <text class="font-black text-2xl text-yellow-400">&rarr;</text>
+   </a>
+</section>

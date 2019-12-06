@@ -1,0 +1,102 @@
+<section>
+  <section class="<%= @playing_now.visibility %> flex justify-center">
+    <label class="inline-block my-5 mx-3 text-xs font-black text-gray-400">PLAYING : </label>
+    <playing class="inline-block font-black text-xs text-black bg-yellow-400 my-5 px-5 p1-2 rounded border-solid border-black border-2"><%= @playing_now.player_name %></playing>
+    <label class="inline-block my-5 mx-3 text-xs font-black text-gray-400">ROUND : </label>
+    <playing class="inline-block font-black text-xs text-black bg-yellow-400 my-5 px-5 p1-2 rounded border-solid border-black border-2"><%= @playing_now.round %></playing>
+  </section>
+  <section class="<%= @played_card.visibility %> flex justify-center">
+    <playing class="fixed top-10 inline-block font-black text-black bg-yellow-400 my-5 px-10 py-3 rounded border-solid border-black border-2"><%= @played_card.player %>
+    <card class="card inline-block m-2 bg-white rounded shadow-xl cursor-pointer">
+      <border class="py-6 px-2 m-2 bg-white inline-block rounded border border-solid border-gray-300 bg-white text-4xl">
+        <%= raw @played_card.card %>
+      </border>
+    </card>
+    </playing>
+  </section>
+  <section class="<%= @init_view %> flex justify-center">
+    <form action="#" phx-change="validate" phx-submit="join_game" class="p-5 m-5 bg-white shadow-xl rounded inline-block">
+      <%=text_input :game, :name, placeholder: "Game Name", class: "m-2 border border-solid border-gray-400 rounded p-2" , value: @game_input.name%>
+      <%=text_input :game, :player_name, placeholder: "Player Name", class: "m-2 border border-solid border-gray-400 rounded p-2", value: @game_input.player_name%>
+      <%=password_input :game, :password, placeholder: "Password", class: "hidden m-2 border border-solid border-gray-400 rounded p-2", value: @game_input.password%>
+      <button class="m-2 bg-yellow-400 text-black hover:bg-black hover:text-yellow-400 text-lg font-black py-2 px-4 rounded">&rarr;</button>
+    </form>
+  </section>
+    <section class="<%= @start_view %> flex justify-center">
+        <div class="p-5 m-5 inline-block">
+        <button phx-click="start_game" class="px-10 py-4 text-2xl antialiased hover:bg-black bg-yellow-400 text-black hover:text-yellow-400 font-black rounded shadow-lg">START</button>
+        <button phx-click="copy_url" class="block text-sm font-black text-gray-400 py-5" 
+        onclick="(function(){ // Copy on click function
+                    var textarea = document.createElement('textarea');
+                    textarea.textContent = '<%= @url %>';
+                    textarea.style.position = 'fixed';  // Prevent scrolling to bottom of page in MS Edge.
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                      return document.execCommand('copy'); // Security exception may be thrown by some browsers.
+                    } catch (ex) {
+                      console.warn('Copy to clipboard failed.', ex);
+                      return false;
+                    } finally {
+                      document.body.removeChild(textarea);
+                    }
+                })()"
+        >COPY URL TO SHARE &rarr;</button>
+        </div>
+    </section>
+    <section class="<%= @bet_view %> flex justify-center">
+        <div class="p-2 m-2 bg-white shadow-xl rounded inline-block">
+        <text class="block text-gray-400 font-black text-xs">BET.</text>
+          <%= for bet <- 0..@bet_count do %>
+            <button value="<%= bet %>" phx-click="place_bet" class="m-1 bg-yellow-400 text-black hover:bg-black hover:text-yellow-400 text-lg font-black py-2 px-4 rounded"> <%= bet %></button>
+          <% end %>
+        </div>
+    </section>
+
+    <section class="<%= @table_view %> flex justify-center">
+      <div class="p-2 m-2 inline-block bg-white rounded shadow-lg">
+      <text class="block text-gray-400 font-black text-xs">TABLE.</text>
+        <%= for card <- @table do %>
+          <card class="card inline-block m-2 rounded shadow-xl cursor-pointer">
+            <border class="py-5 px-1 m-1 bg-white inline-block rounded border border-solid border-gray-300 bg-white text-xl">
+              <name class="text-<%= card.color %>"><%= card.value %><%= raw card.shape %></name>
+            </border>
+          </card>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="<%= @hand_view %> flex justify-center">
+      <div class="p-2 m-2 inline-block bg-white rounded shadow-lg">
+      <text class="block text-gray-400 font-black text-xs">HAND.</text>
+        <%= for card <- @hand do %>
+          <button value="<%= card.name %>" phx-click="play_card" class="card inline-block m-2 rounded shadow-xl cursor-pointer">
+            <border class="py-5 px-1 m-1 bg-white inline-block rounded border border-solid border-gray-300 bg-white text-xl">
+              <name class="text-<%= card.color %>"><%= card.value %><%= raw card.shape %></name>
+            </border>
+          </button>
+        <% end %>
+      </div>
+    </section>
+
+    <section class="<%= @result_view %> flex justify-center">
+      <div class="p-5 m-2 inline-block bg-white rounded shadow-lg">
+        <header class="text-gray-400 font-black text-xs">RESULT.</header>
+          <%= for player <- @result do %>
+          <player class="block text-sm font-black flex justify-center"> <%= raw player %> </player>
+          <% end %>
+      </div>
+    </section>
+    <section class="block flex justify-center">
+      <text phx-click="restart_game" class="m-2 px-5 py-2 inline-block bg-yellow-400 rounded shadow-lg text-black font-black text-xs cursor-pointer">
+        RESTART
+      </text>
+    </section>
+
+  <section class="<%= @error.visibility %> fixed bottom-0 right-0">
+    <text class="m-10 px-10 py-5 bg-white block rounded-full shadow-xl uppercase text-yellow-700 font-black text-xl"><%= @error.message %></text>
+  </section>
+  <section class="<%= @info.visibility %> fixed bottom-0 right-0">
+    <text class="m-10 px-10 py-5 bg-yellow-400 block rounded-full shadow-xl uppercase text-black font-black text-xl"><%= raw @info.message %></text>
+  </section>
+</section>
