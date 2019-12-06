@@ -43,7 +43,7 @@ defmodule ThirteenLive.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:thirteen, path: "../thirteen"},
+      {:thirteen, git: "https://github.com/apboobalan/thirteen.git"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
