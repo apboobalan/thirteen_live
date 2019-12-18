@@ -15,6 +15,10 @@
    <div class="bg-yellow-400 block h-3 md:mx-3 my-3"></div>
    <ul class="md:m-10 list-none">
    <li class="text-black font-bold">
+      <text class="text-xl text-yellow-400 font-bold">&nbsp;&hearts;&nbsp;</text>
+      Enter Game Name(Table name or Room Name) and ask other players to join the same Game.
+   </li>
+   <li class="text-black font-bold">
       <text class="text-xl text-yellow-400 font-bold">&nbsp;&spades;&nbsp;</text>
       Game is played among 2 - 4 people.
    </li>

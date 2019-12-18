@@ -6,7 +6,7 @@
     <playing class="inline-block font-black text-xs text-black bg-yellow-400 my-5 px-5 p1-2 rounded border-solid border-black border-2"><%= @playing_now.round %></playing>
   </section>
   <section class="<%= @played_card.visibility %> flex justify-center">
-    <playing class="fixed top-10 inline-block font-black text-black bg-yellow-400 my-5 px-10 py-3 rounded border-solid border-black border-2"><%= @played_card.player %>
+    <playing class="fixed inline-block font-black text-black bg-white my-20 px-10 py-3 rounded shadow-xl border border-solid border-gray-200"><%= @played_card.player %>
     <card class="card inline-block m-2 bg-white rounded shadow-xl cursor-pointer">
       <border class="py-6 px-2 m-2 bg-white inline-block rounded border border-solid border-gray-300 bg-white text-4xl">
         <%= raw @played_card.card %>
@@ -82,21 +82,31 @@
     <section class="<%= @result_view %> flex justify-center">
       <div class="p-5 m-2 inline-block bg-white rounded shadow-lg">
         <header class="text-gray-400 font-black text-xs">RESULT.</header>
+        <legend class="text-xs font-black text-gray-500"> PLAYER &spades; BETS MADE &spades; BETS WON &spades; POINTS</legend>
           <%= for player <- @result do %>
           <player class="block text-sm font-black flex justify-center"> <%= raw player %> </player>
           <% end %>
       </div>
     </section>
+    <section class="<%= @modal_view %> flex justify-center">
+      <modal class="fixed top-0 inline-block font-black text-black bg-white m-20 p-12 rounded shadow-xl border border-solid border-gray-200">
+        <text class="">Restart ?</text>
+        <actions class="block">
+        <button phx-click="restart_game" class="m-2 px-8 py-2 rounded shadow-xl text-gray-600 font-black">YES</button>
+        <button phx-click="hide_modal" class="m-2 px-8 py-2 rounded shadow-xl bg-yellow-400 font-black">NO</button>
+        </actions>
+      </modal>
+    </section>
     <section class="block flex justify-center">
-      <text phx-click="restart_game" class="m-2 px-5 py-2 inline-block bg-yellow-400 rounded shadow-lg text-black font-black text-xs cursor-pointer">
+      <text  phx-click="show_modal" class="m-2 px-5 py-2 inline-block bg-yellow-400 rounded shadow-lg text-black font-black text-xs cursor-pointer">
         RESTART
       </text>
     </section>
 
   <section class="<%= @error.visibility %> fixed bottom-0 right-0">
-    <text class="m-10 px-10 py-5 bg-white block rounded-full shadow-xl uppercase text-yellow-700 font-black text-xl"><%= @error.message %></text>
+    <text class="my-20 mx-10 px-10 py-5 bg-white block rounded-full shadow-xl uppercase text-yellow-700 font-black text-xl"><%= @error.message %></text>
   </section>
   <section class="<%= @info.visibility %> fixed bottom-0 right-0">
-    <text class="m-10 px-10 py-5 bg-yellow-400 block rounded-full shadow-xl uppercase text-black font-black text-xl"><%= raw @info.message %></text>
+    <text class="my-20 mx-10 px-10 py-5 bg-yellow-400 block rounded-full shadow-xl uppercase text-black font-black text-xl"><%= raw @info.message %></text>
   </section>
 </section>

@@ -2,7 +2,7 @@ defmodule ThirteenLiveWeb.GameView do
   use Phoenix.LiveView
   alias ThirteenLiveWeb.Router.Helpers, as: Routes
 
-  @flash_timeout 2000
+  @flash_timeout 1000
 
   def handle_event(
         "validate",
@@ -135,6 +135,9 @@ defmodule ThirteenLiveWeb.GameView do
       {:noreply, socket}
     end
   end
+
+  def handle_event("show_modal", _value, socket), do: {:noreply, socket |> assign(modal_view: "block")}
+  def handle_event("hide_modal", _value, socket), do: {:noreply, socket |> assign(modal_view: "hidden")}
 
   def handle_event("restart_game", _value, socket) do
     broadcast("restart_game")
@@ -398,6 +401,7 @@ defmodule ThirteenLiveWeb.GameView do
       hand_view: "hidden",
       table_view: "hidden",
       result_view: "hidden",
+      modal_view: "hidden",
       bet_count: 0,
       hand: [],
       table: [],
