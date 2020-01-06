@@ -429,7 +429,7 @@ defmodule ThirteenLiveWeb.GameView do
   end
 
   defp create_game_lobby(name) do
-    Agent.start_link(fn -> [] end, name: name |> String.to_atom())
+    Agent.start(fn -> [] end, name: name |> String.to_atom())
   end
 
   defp clear_lobby(name) do
@@ -465,7 +465,8 @@ defmodule ThirteenLiveWeb.GameView do
             socket = socket |> assign(:player_name, name)
             show_info("#{name} already playing, so merged.")
             subscribe(game_name)
-            socket |> assign(init_view: "hidden", start_view: "block")
+            show_game()
+            socket |> assign(init_view: "hidden")
 
           false ->
             show_error(
