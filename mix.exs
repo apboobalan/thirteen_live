@@ -44,7 +44,7 @@ defmodule ThirteenLive.MixProject do
   defp deps do
     [
       {:thirteen, git: "https://github.com/apboobalan/thirteen.git"},
-      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
+      {:phoenix_live_view, "~> 0.4.0"},
       {:phoenix, "~> 1.4.11"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_html, "~> 2.11"},
