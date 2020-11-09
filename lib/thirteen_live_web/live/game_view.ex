@@ -414,6 +414,8 @@ defmodule ThirteenLiveWeb.GameView do
     }
   end
 
+  defp to_global_name(name), do: {:global, name}
+
   defp stop_game(game_name) do
     case game_name |> Thirteen.alive?() do
       true -> game_name |> Thirteen.stop()
@@ -422,30 +424,28 @@ defmodule ThirteenLiveWeb.GameView do
   end
 
   defp game_lobby_created?(name) do
-    case Process.whereis(name |> String.to_atom()) do
-      nil -> false
+    case :global.whereis_name(name) do
+      :undefined -> false
       _ -> true
     end
   end
 
   defp create_game_lobby(name) do
-    Agent.start(fn -> [] end, name: name |> String.to_atom())
+    Agent.start(fn -> [] end, name: name |> to_global_name())
   end
 
   defp clear_lobby(name) do
-    agent_name = name |> String.to_atom()
-
-    case Process.whereis(agent_name) do
-      nil -> :ok
-      _ -> agent_name |> Agent.stop()
+    case :global.whereis_name(name) do
+      :undefined -> :ok
+      _ -> name |> to_global_name |> Agent.stop()
     end
   end
 
   defp add_player_to_lobby(lobby, player) do
-    lobby |> String.to_atom() |> Agent.update(&[player | &1])
+    lobby |> to_global_name() |> Agent.update(&[player | &1])
   end
 
-  defp get_players(lobby), do: Agent.get(lobby |> String.to_atom(), & &1)
+  defp get_players(lobby), do: Agent.get(lobby |> to_global_name(), & &1)
 
   defp merge_player_and_socket(socket, %{"name" => name, "password" => password} = player) do
     game_name = socket.assigns.game_name
